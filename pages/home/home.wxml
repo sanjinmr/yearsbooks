@@ -1,2 +1,53 @@
 <!--pages/home/home.wxml-->
-<text>首页</text>
+<view class='home-container'>
+  <!--顶部导航栏l-->
+  <!-- <view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}"           wx:key="unique" bindtap="navbarTap">
+      {{item}}
+    </text>
+  </view> -->
+
+  <!-- banner -->
+  <view>
+    <swiper indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="key">
+        <swiper-item>
+          <image src="{{item}}"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 分类导航 -->
+  <view class='navs'>
+    <block wx:for-items="{{navItems}}" wx:key="name">
+      <view class='nav-item' 
+      catchtap='catchTapCategory' data-type='{{item.name}}' data-typeid="{{item.typeId}}">
+        <image class='nav-image' src="{{item.imageUrl}}"/>
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class='navitem-separate'></view>
+
+  <view class='category-container'>
+      <view class='category-title'>
+        <text class='name'>新品上架</text>
+        <view class='line_flag'></view>
+        <image class='head-img' src='{{newgoods_head_url}}'></image>
+      </view>
+  </view>
+
+  <scroll-view scroll-x='true'>
+    <view class='goods'>
+      
+    </view>
+  </scroll-view>
+
+</view>
+
+
+
+
