@@ -40,11 +40,22 @@
       </view>
   </view>
 
+  <!-- 货物展示 -->
+
   <scroll-view scroll-x='true'>
     <view class='goods'>
-      
+      <block wx:for-items="{{goodsItems}}" wx:key="name">
+        <view class='goods-items' 
+        catchtap='catchTapCategory' data-type="{{item.name}}" data-typeid="{{item.goodId}}">
+          <image src='{{item.imageUrl}}' class='goods-image' />
+          <text>{{item.name}}</text>
+          <p>{{item.newPrice}}</p>
+        </view>
+      </block>
     </view>
   </scroll-view>
+
+
 
 </view>
 

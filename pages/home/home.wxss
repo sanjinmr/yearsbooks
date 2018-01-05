@@ -113,5 +113,22 @@ swiper-item image {
   margin: 20rpx auto;
 }
 
+.category-title .head-img {
+  width: 100%;
+  height: 270rpx;
+}
 
+.goods {
+  width: 100%;
+}
+
+.goods .goods-items {
+  width: 100%;
+}
+
+p {
+  color: red;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
 

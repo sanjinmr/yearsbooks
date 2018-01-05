@@ -47,6 +47,63 @@ Page({
       },
     ],
 
+    newgoods_head_url: "http://mz.djmall.xmisp.cn/files/banner/20161202/148066062976.jpg",
+
+    goodsItems: [
+      {
+        goodId: 0,
+        name: '兰蔻小黑瓶',
+        url: 'bill',
+        imageUrl: "http://mz.djmall.xmisp.cn/files/product/20161201/148057921620.jpg",
+        newPrice: "￥200.00",
+        oldPrice: "￥300.00",
+      },
+
+      {
+        goodId: 1,
+        name: '兰蔻小黑瓶',
+        url: 'bill',
+        imageUrl: "http://mz.djmall.xmisp.cn/files/product/20161201/148057921620.jpg",
+        newPrice: "￥200.00",
+        oldPrice: "￥300.00",
+      },
+
+      {
+        goodId: 2,
+        name: '兰蔻小黑瓶',
+        url: 'bill',
+        imageUrl: "http://mz.djmall.xmisp.cn/files/product/20161201/148057921620.jpg",
+        newPrice: "￥200.00",
+        oldPrice: "￥300.00",
+      },
+
+      {
+        goodId: 3,
+        name: '兰蔻小黑瓶',
+        url: 'bill',
+        imageUrl: "http://mz.djmall.xmisp.cn/files/product/20161201/148057921620.jpg",
+        newPrice: "￥200.00",
+        oldPrice: "￥300.00",
+      },
+
+      {
+        goodId: 4,
+        name: '兰蔻小黑瓶',
+        url: 'bill',
+        imageUrl: "http://mz.djmall.xmisp.cn/files/product/20161201/148057921620.jpg",
+        newPrice: "￥200.00",
+        oldPrice: "￥300.00",
+      },
+
+      {
+        goodId: 5,
+        name: '兰蔻小黑瓶',
+        url: 'bill',
+        imageUrl: "http://mz.djmall.xmisp.cn/files/product/20161201/148057921620.jpg",
+        newPrice: "￥200.00",
+        oldPrice: "￥300.00",
+      }
+    ]
   },
 
   /**
