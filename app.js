@@ -1,5 +1,6 @@
 //app.js
 App({
+  
   // 小程序启动时执行的方法
   // 以wx.开头的都是系统封装好的方法
   onLaunch: function () {

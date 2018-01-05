@@ -8,3 +8,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.top-line {
+  background-color: #c1c1c1;
+  height: 5rpx;
+  width: 100%;
+}

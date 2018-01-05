@@ -40,6 +40,8 @@
       </view>
   </view>
 
+  <view class='navitem-separate'></view>
+
   <!-- 货物展示 -->
 
   <scroll-view scroll-x='true'>
@@ -55,6 +57,25 @@
     </view>
   </scroll-view>
 
+  <view class='navitem-separate'></view>
+
+  <!-- 推荐商品 -->
+  <view class='recommends-container'>
+    <block wx:for-items='{{recommends}}' wx:key='name'>
+      <view class='recommends-item' 
+      catchtap='catchRecomends' data-type="{{item.name}}" data-typeId='{{item.goodId}}'>
+        <image class="recommends-img" src='{{item.imageUrl}}'></image>
+        <text>{{item.name}}</text>
+        <p>{{item.newPrice}}</p>
+      </view>
+    </block>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class='loadingmore-container' hidden='{{isHideLoadMore}}'>
+    <view  class="loadingmore-img"></view>
+    <view class='loadingmore-tip'>正在加载</view>
+  </view>
 
 
 </view>

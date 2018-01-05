@@ -4,6 +4,7 @@
     "pages/classify/classify",
     "pages/cart/cart",
     "pages/mine/mine",
+    "pages/detail/detail",
     "pages/index/index",
     "pages/logs/logs",
     "pages/personal/personal"
@@ -12,7 +13,8 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "经年书苑",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#E3E3E3"
   },
   "tabBar":{
     "color":"#8a8a8a",
