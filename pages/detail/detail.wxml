@@ -1,2 +1,25 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view class='detail_container'>
+
+  <!-- banner -->
+  <swiper class='banner' 
+  indicator-dots='{{indicatorDots}}'autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}'>
+    <block wx:for='{{imgUrls}}' wx:key='key'>
+      <swiper-item>
+        <image src='{{item}}' data-src='{{item}}' bindtap='previewImg'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <scroll-view scroll-y='true'>
+    <view class='detail'>
+      <text class='title'>LANCOME兰蔻小黑瓶精华肌底液</text>
+      <text class='price'>￥500</text>
+    </view>
+
+    <view class='separate'></view>
+
+  </scroll-view>
+
+
+</view>

@@ -1,1 +1,41 @@
 /* pages/detail/detail.wxss */
+page {
+  background-color: #F8F9FD;
+  flex: none;
+  display: flex;
+}
+
+.detail_container {
+  width: 100%;
+  height: 100%;
+}
+
+swiper {
+  height: 500rpx;
+}
+
+swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+
+scroll-view .detail {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  margin-left: 15rpx;
+}
+
+scroll-view .detail .title {
+  color: #666;
+  font: 30rpx;
+  margin-top: 15rpx;
+}
+
+scroll-view .detail .price {
+  color: red;
+  font: 30rpx;
+  margin-top: 15rpx;
+}

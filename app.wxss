@@ -14,3 +14,8 @@
   height: 5rpx;
   width: 100%;
 }
+
+.separate {
+  background-color: #f2f2f2;
+  height: 15rpx;
+}
