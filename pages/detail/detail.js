@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+
 Page({
 
   /**
@@ -9,6 +10,8 @@ Page({
     autoplay: true, // 是否自动切换
     interval: 3000, // 自动切换时间间隔，3s
     duration: 1000, // 滑动动画的时长1s
+    showDialog: false,
+    hasFollow: false,
 
     // banner
     imgUrls: [
@@ -18,6 +21,19 @@ Page({
       "http://mz.djmall.xmisp.cn/files/product/20161201/148057924965_middle.jpg",
       "http://mz.djmall.xmisp.cn/files/product/20161201/148057925958_middle.jpg"
     ],
+
+    // 商品详情（图）
+    detailImg: [
+      "http://7xnmrr.com1.z0.glb.clouddn.com/detail_1.jpg",
+      "http://7xnmrr.com1.z0.glb.clouddn.com/detail_2.jpg",
+      "http://7xnmrr.com1.z0.glb.clouddn.com/detail_3.jpg",
+      "http://7xnmrr.com1.z0.glb.clouddn.com/detail_4.jpg",
+      "http://7xnmrr.com1.z0.glb.clouddn.com/detail_5.jpg",
+      "http://7xnmrr.com1.z0.glb.clouddn.com/detail_6.jpg",
+    ],
+
+    follow_img:"../../images/bottomNav/follow_normal.png",
+    follow_selected_img: "../../images/bottomNav/follow_selected.png",
   },
 
   /**
@@ -74,5 +90,21 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+
+  /**
+   * 选择购买商品数量
+   */
+  num_choice: function() {
+
+  },
+
+  /**
+   * 切换选择数量对话框的显示
+   */
+  toggleDialog: function() {
+    this.setData({
+      showDialog: !this.data.showDialog,
+    });
+  },
 })
