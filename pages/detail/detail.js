@@ -13,6 +13,13 @@ Page({
     showDialog: false,
     hasFollow: false,
 
+    numStepper: {
+      num: 1, // 购买数量
+      minusStatus: 'disabled',  // 使用data数据对象设置样式名   默认1时不能减少了
+      min: 1,
+      max: 20,
+    },
+
     // banner
     imgUrls: [
       "http://mz.djmall.xmisp.cn/files/product/20161201/148057921620_middle.jpg",
@@ -93,6 +100,17 @@ Page({
   },
 
   /**
+   * 预览图片
+   */
+  previewImg: function(e) {
+    var current = e.target.dataset.src;
+    wx.previewImage({
+        current: current,
+        urls: this.data.imgUrls,
+    });
+  },
+
+  /**
    * 选择购买商品数量
    */
   num_choice: function() {
@@ -107,4 +125,92 @@ Page({
       showDialog: !this.data.showDialog,
     });
   },
+
+  /**
+   * 减购买数量
+   */
+  bindMinus: function() {
+    console.log("bindMinus.");
+    var num1 = this.data.numStepper.num;
+    if (num1 > 1) {
+      num1 --;
+    }
+    var minusStatus1 = num1 <= 1 ? 'disabled' : 'normal';
+    this.setData({
+      numStepper: {
+        num: num1,
+        minusStatus: minusStatus1,
+      },
+    });
+    console.log("bindMinus num: " + num1);
+  },
+
+  /**
+   * 加购买数量
+   */
+  bindPlus: function () {
+    console.log("bindPlus.");
+    var num1 = this.data.numStepper.num;
+    num1 ++;
+    var minusStatus1 = num1 <= 1 ? 'disabled' : 'normal';
+    this.setData({
+      numStepper: {
+        num: num1,
+        minusStatus: minusStatus1,
+      },
+    });
+    console.log("bindPlus num: " + num1);
+  },
+
+  /**
+   * 输入购买数量
+   */
+  bindManual: function (e) {
+    console.log("bindManual.");
+    var num1 = e.detail.value;
+    if (0 == num1) {
+      //num1 = 1;
+    }
+    var minusStatus1 = num1 <= 1 ? 'disabled' : 'normal';
+    this.setData({
+      numStepper: {
+        num: num1,
+        minusStatus: minusStatus1,
+      },
+    });
+    console.log("bindManual num: " + num1);
+  },
+
+  /**
+   * 加入购物车
+   */
+  addCart: function() {
+
+  },
+
+  /**
+   * 关注
+   */
+  toFollow: function () {
+
+  },
+
+  /**
+   * 立即购买
+   */
+  immeBuy: function () {
+    wx.showToast({
+      title: '购买成功',
+      icon: 'success',
+      duration: 2000,
+    })
+  },
+
+  /**
+   * 进入购物车
+   */
+  toCar: function () {
+
+  },
+
 })

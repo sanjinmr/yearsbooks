@@ -1,6 +1,5 @@
 <!--pages/detail/detail.wxml-->
 <view class='detail_container'>
-
   <!-- banner -->
   <swiper class='banner' 
   indicator-dots='{{indicatorDots}}'autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}'>
@@ -36,13 +35,18 @@
         </view>
         <view class='choice_lay'>
           <view class='border_line'></view>
-          <text class='num_tip'>购买数量</text>
-          
+          <import src="../../templates/quantity.wxml" />
+          <view class='choice_lay1'>
+            <text class='num_tip'>购买数量</text>
+            <template is="num_stepper" data='{{...numStepper}}'/>
+          </view>
           <view class='border_line1'></view>
         </view>
-
+        <view class='control_lay'>
+          <button class="add_cart" form-type='submit' bindtap='addCart'>加入购物车</button>
+          <button class='buy' form-type='submit' bindtap='immeBuy'>立即购买</button>
+        </view>
       </view>
-      
     </view>
     <view class='separate'></view>
     <view class='remark_container'>
@@ -66,5 +70,7 @@
     <button class='add_cart'>加入购物车</button>
     <button class='buy'>立即购买</button>
   </view>
+
+
 
 </view>

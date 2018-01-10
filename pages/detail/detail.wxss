@@ -1,4 +1,7 @@
 /* pages/detail/detail.wxss */
+
+@import "../../templates/num_stepper.wxss";
+
 page {
   background-color: #F8F9FD;
   flex: none;
@@ -113,31 +116,69 @@ scroll-view .detail .price {
   margin-top: 5rpx;
 }
 
-.dialog_container  .choice_lay {
+.dialog_container .choice_lay {
   width: 100%;
   display: flex;
   flex-direction: column;
   font-size: 30rpx; 
   position: absolute;
-  top: 200rpx;
+  top: 230rpx;
 }
 
 .dialog_container .choice_lay .border_line {
   width: 100%;
   height: 4rpx;
   background-color: gainsboro;
-  margin-bottom: 50rpx;
 }
 
 .dialog_container .choice_lay .border_line1 {
   width: 100%;
   height: 4rpx;
   background-color: gainsboro;
-  margin-top: 50rpx;
 }
 
-.dialog_container .choice_lay .num_tip {
+.dialog_container .choice_lay1 {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dialog_container .choice_lay1 .num_tip {
   margin-left: 15rpx;
+  margin-right: 280rpx;
+}
+
+.dialog_container .control_lay {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+}
+
+.dialog_container .add_cart {
+  width: 50%;
+  height: 100rpx;
+  background-color: #4caf50; /* Green */
+  font-size: 30rpx;
+  color: white;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 0rpx;
+}
+
+.dialog_container .buy {
+  width: 50%;
+  height: 100rpx;
+  background-color: #f44336; /* 红色 */
+  font-size: 30rpx;
+  color: white;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 0rpx;
 }
 
 .remark_container {
@@ -207,7 +248,7 @@ scroll-view .detail .price {
   background-color: gainsboro;
 }
 
-.add_cart {
+.detail_nav .add_cart {
   background-color: #4caf50; /* Green */
   color: white;
   text-align: center;
@@ -220,7 +261,7 @@ scroll-view .detail .price {
   line-height: 100rpx;
 }
 
-.buy {
+.detail_nav .buy {
   background-color: #f44336; /* 红色 */
   color: white;
   text-align: center;
