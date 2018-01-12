@@ -19,15 +19,15 @@
 
     <view class='separate'></view>
     <!-- sku选择 -->
-    <text class='num_choice' bindtap='num_choice'>请选择购买数量</text>
+    <text class='num_choice' bindtap='numChoice'>请选择购买数量</text>
     <!-- 选择购买数量的对话框 -->
     <view class="dialog {{showDialog?'dialog_show':''}}">
       <!-- 蒙板 -->
       <view class='dialog_mask' bindtap='toggleDialog'></view>
       <view class='dialog_container'>
-        <image class='close_img' src='../../images/close_img.png'></image>
+        <image class='close_img' src='../../images/close_img.png' bindtap='closeImg'/>
         <image class="good_img"  
-        src="http://mz.djmall.xmisp.cn/files/product/20161201/148057921620_middle.jpg"></image>
+        src="http://mz.djmall.xmisp.cn/files/product/20161201/148057921620_middle.jpg"/>
         <view class='good_des'>
           <text class='price'>￥500</text>
           <text class='num_all'>库存20件</text>
@@ -51,7 +51,7 @@
     <view class='separate'></view>
     <view class='remark_container'>
         <text class='remark_title'>商品评价</text>
-        <text class='remark'>东西还可以,好评~</text>
+        <input class='remark' value='东西还可以,好评~'></input>
     </view>
     <view class='separate'></view>
     <text class='goods_des'>商品详情</text>
@@ -63,14 +63,12 @@
 
   <!-- 底部悬浮栏 -->
   <view class='detail_nav'>
-    <image class='toCar' src='../../images/bottomNav/cart.png'></image>
+    <image class='toCar' src='../../images/bottomNav/cart.png' bindtap='toCar'></image>
     <view class='line_nav'></view>
     <image class='toFollow' 
-    src="{{!hasFollow?follow_img:follow_selected_img}}"></image>
-    <button class='add_cart'>加入购物车</button>
-    <button class='buy'>立即购买</button>
+     src="{{!hasFollow?follow_img:follow_selected_img}}" bindtap='toFollow'></image>
+    <button class='add_cart' bindtap='addCart'>加入购物车</button>
+    <button class='buy' bindtap='immeBuy'>立即购买</button>
   </view>
-
-
 
 </view>

@@ -113,17 +113,25 @@ Page({
   /**
    * 选择购买商品数量
    */
-  num_choice: function() {
-
+  numChoice: function() {
+    console.log("numChoice.");
+    toggleDialog(this);
   },
 
   /**
    * 切换选择数量对话框的显示
    */
   toggleDialog: function() {
-    this.setData({
-      showDialog: !this.data.showDialog,
-    });
+    console.log("toggleDialog.");
+    toggleDialog(this);
+  },
+
+  /**
+   * 点击‘X’关闭数量选择对话框
+   */
+  closeImg: function(e) {
+    console.log("closeDialog. " + e);
+    toggleDialog(this);
   },
 
   /**
@@ -148,7 +156,7 @@ Page({
   /**
    * 加购买数量
    */
-  bindPlus: function () {
+  bindPlus: function() {
     console.log("bindPlus.");
     var num1 = this.data.numStepper.num;
     num1 ++;
@@ -165,7 +173,7 @@ Page({
   /**
    * 输入购买数量
    */
-  bindManual: function (e) {
+  bindManual: function(e) {
     console.log("bindManual.");
     var num1 = e.detail.value;
     if (0 == num1) {
@@ -185,14 +193,25 @@ Page({
    * 加入购物车
    */
   addCart: function() {
-
+    wx.showToast({
+      title: '添加成功',
+      icon: 'success',
+      duration: 2000,
+    })
   },
 
   /**
    * 关注
    */
   toFollow: function () {
-
+    wx.showToast({
+      title: '关注成功',
+      icon: 'success',
+      duration: 2000,
+    });
+    this.setData({
+      hasFollow: !this.data.hasFollow,
+    });
   },
 
   /**
@@ -210,7 +229,16 @@ Page({
    * 进入购物车
    */
   toCar: function () {
-
+    // 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+    wx.switchTab({
+      url: '../cart/cart',
+    })
   },
 
 })
+
+function toggleDialog(that) {
+  that.setData({
+    showDialog: !that.data.showDialog,
+  });
+}

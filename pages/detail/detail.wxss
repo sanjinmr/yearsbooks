@@ -52,7 +52,15 @@ scroll-view .detail .price {
   color: #666;
 }
 
-.dialog_mask {
+.dialog {
+
+}
+
+.dialog_show {
+  
+}
+
+.dialog .dialog_mask {
   position: fixed;
   top: 0;
   right: 0;
@@ -63,13 +71,23 @@ scroll-view .detail .price {
   z-index: 10;
 }
 
-.dialog_container {
+.dialog .dialog_container {
   position: fixed;
   bottom: 0;
   width: 750rpx;
   height: 500rpx;
   background: white;
   z-index: 11;
+  transform: translateY(150%);
+  transition: all 0.4s ease;
+}
+
+.dialog.dialog_show .dialog_mask {
+  display: block;
+}
+
+.dialog.dialog_show .dialog_container {
+  transform: translateY(0);
 }
 
 .dialog_container .row {
@@ -79,11 +97,12 @@ scroll-view .detail .price {
 }
 
 .dialog_container .close_img {
-  width: 40rpx;
-  height: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
   position: absolute;
   right: 10rpx;
   top: 10rpx;
+  z-index: 11;
 }
 
 .dialog_container .good_img {

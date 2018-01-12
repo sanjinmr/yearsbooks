@@ -1,2 +1,15 @@
 <!--pages/cart/cart.wxml-->
-<text>购物车</text>
+<view class='cart_container'>
+  <scroll-view class='cart_list' scroll-y='true'>
+    <view class='separate'></view>
+      <view class='cart_item' wx:for='{{carts}}' wx:key='key'>
+        <image 
+        class='cart_img_select'
+        src="{{item.isSelect ? '../../images/check_selected.png' : '../../images/check_selectedun_gray.png'}}"></image>
+        <image class='good_img' src='{{item.pic}}'></image>
+        <view class='itemdes'>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+  </scroll-view>
+</view>
