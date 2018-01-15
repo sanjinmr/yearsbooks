@@ -1,15 +1,23 @@
 <!--pages/cart/cart.wxml-->
+<import src="../../templates/quantity.wxml" />
 <view class='cart_container'>
   <scroll-view class='cart_list' scroll-y='true'>
     <view class='separate'></view>
-      <view class='cart_item' wx:for='{{carts}}' wx:key='key'>
-        <image 
-        class='cart_img_select'
-        src="{{item.isSelect ? '../../images/check_selected.png' : '../../images/check_selectedun_gray.png'}}"></image>
-        <image class='good_img' src='{{item.pic}}'></image>
-        <view class='itemdes'>
-          <text>{{item.name}}</text>
+    <view class='cart_item' wx:for='{{carts}}' wx:key='key'>
+      <image
+      class='cart_img_select'
+      src="{{item.isSelect ? '../../images/check_selected.png' : '../../images/check_selectedun_gray.png'}}"></image>
+      <image class='good_img' src='{{item.pic}}'></image>
+      <view class='row'>
+        <text class='title'>{{item.name}}</text>
+        <view class='column'>
+          <text class='price'>￥</text>
+          <text class='price'>{{item.price}}</text>
+          <view class='stepper'>
+            <template is='num_stepper' ></template>
+          </view>
         </view>
       </view>
+    </view>
   </scroll-view>
 </view>

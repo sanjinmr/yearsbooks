@@ -1,4 +1,7 @@
 /* pages/cart/cart.wxss */
+
+@import "../../templates/num_stepper.wxss";
+
 page {
   background-color: #F8F9FD;
 }
@@ -26,4 +29,31 @@ page {
   width: 120rpx;
   height: 80rpx;
   margin-left: 25rpx;
+}
+
+.cart_item .row {
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+
+.cart_item .row .title {
+  width: 450rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  display: flex;
+}
+
+.cart_item .row .column  {
+  display: flex;
+  align-items: center;
+  margin-top: 5rpx;
+}
+
+.cart_item .row .column .price {
+  color: red;
+}
+
+.cart_item .row .column .stepper {
+  padding-left: 50px;
 }

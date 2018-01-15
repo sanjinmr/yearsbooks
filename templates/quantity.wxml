@@ -10,3 +10,15 @@
     <text class='plus' bindtap='bindPlus'>+</text>
   </view>
 </template>
+
+<template name="num_stepper_1">
+  <!-- 主容器 -->
+  <view class='num_stepper'>
+    <!-- -号 -->
+    <text class='{{minusStatus}}' bindtap='bindMinus'>-</text>
+    <!-- 数值 -->
+    <input bindchange='bindManual' type='number' value='{{num}}'></input>
+    <!-- +号 -->
+    <text class='plus' bindtap='bindPlus'>+</text>
+  </view>
+</template>
