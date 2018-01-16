@@ -15,10 +15,16 @@
   <!-- 主容器 -->
   <view class='num_stepper'>
     <!-- -号 -->
-    <text class='{{minusStatus}}' bindtap='bindMinus'>-</text>
+    <text 
+    class="{{quantity > min ? 'normal' : 'disabled' }}" 
+    data-index='{{index}}' data-quan='{{quantity}}' data-min='{{min}}' bindtap='bindMinus'>-</text>
     <!-- 数值 -->
-    <input bindchange='bindManual' type='number' value='{{num}}'></input>
+    <input bindchange='bindManual' 
+    data-index='{{index}}' data-quan='{{quantity}}' data-min='{{min}}' data-max='{{max}}'
+    type='number' value='{{quantity}}'></input>
     <!-- +号 -->
-    <text class='plus' bindtap='bindPlus'>+</text>
+    <text class=plus {{quantity < max ? 'normal' : 'disabled' }}
+    data-index='{{index}}' data-quan='{{quantity}}' data-max='{{max}}'
+    bindtap='bindPlus'>+</text>
   </view>
 </template>
