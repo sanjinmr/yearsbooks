@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    userInfo: {
+      headImg: '../../images/jnwh.jpg',
+      nickName: '三金哥哥',
+    }
   },
 
   /**

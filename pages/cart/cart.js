@@ -1,6 +1,6 @@
 // pages/cart/cart.js
 var carts = new Array();
-
+// 购物车价格没有乘以数量
 Page({
 
   /**

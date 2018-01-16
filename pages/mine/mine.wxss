@@ -2,3 +2,50 @@
 page {
   background-color: #F8F9FD;
 }
+
+.mine_container {
+  width: 100%;
+  height: 100%;
+}
+
+.user_info{
+  width: 100%;
+  height: 300rpx;
+  background: #f0145a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_info .head_img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+}
+
+.user_info .nickname {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.order {
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #666;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: red;
+}
+
+.order .allOrder {
+  
+}
+
+.order .next {
+  width: 50rpx;
+  height: 50rpx;
+  
+}

@@ -1,2 +1,18 @@
 <!--pages/mine/mine.wxml-->
-<text>我的</text>
+<view class='mine_container'>
+  <view class='user_info'>
+    <image class='head_img' src='{{userInfo.headImg}}' ></image>
+    <text class='nickname'>{{userInfo.nickName}}</text>
+    <!-- <image class='user_info_bg'></image> -->
+  </view>
+
+  <view class='separate'></view>
+
+  <view class='order'>
+    <text>我的订单</text>
+    
+    <text class='allOrder'>查看全部订单</text>
+    <image class='next' src='../../images/icon_next.png'></image>
+  </view>
+
+</view>
