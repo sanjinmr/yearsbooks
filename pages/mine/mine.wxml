@@ -14,4 +14,15 @@
     <image class='next' src='../../images/icon_next.png'></image>
   </view>
 
+  <view class='order_line'></view>
+
+  <view class='order_navs'>
+    <view class='order_navs_item' wx:for-items='{{orderItems}}' wx:key='key'>
+      <image class='img' src='{{item.imageurl}}'></image>
+      <text class='name'>{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class='separate'></view>
+
 </view>

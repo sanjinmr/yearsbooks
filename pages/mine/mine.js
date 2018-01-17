@@ -8,7 +8,33 @@ Page({
     userInfo: {
       headImg: '../../images/jnwh.jpg',
       nickName: '三金哥哥',
-    }
+    },
+    orderItems: [
+      {
+        typeId: 0,
+        name: '待付款',
+        url: 'bill',
+        imageurl: '../../images/waiting_pay.png',
+      },
+      {
+        typeId: 1,
+        name: '待发货',
+        url: 'bill',
+        imageurl: '../../images/waiting_fahuo.png',
+      },
+      {
+        typeId: 2,
+        name: '待收货',
+        url: 'bill',
+        imageurl: '../../images/waiting_shouhuo.png',
+      },
+      {
+        typeId: 3,
+        name: '待评价',
+        url: 'bill',
+        imageurl: '../../images/waiting_pjia.png',
+      },
+    ]
   },
 
   /**
