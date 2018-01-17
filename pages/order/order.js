@@ -1,40 +1,37 @@
-// pages/mine/mine.js
+// pages/order/order.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {
-      headImg: '../../images/jnwh.jpg',
-      nickName: '三金哥哥',
+    navbar: {
+      list: [
+        {
+          id: 0,
+          title: '全部',
+        },
+        {
+          id: 1,
+          title: '待付款',
+        },
+        {
+          id: 2,
+          title: '待发货',
+        },
+        {
+          id: 3,
+          title: '待收货',
+        },
+        {
+          id: 4,
+          title: '待评价',
+        },
+      ],
+      selectedId: 0,
+      scroll: false,
     },
-    orderItems: [
-      {
-        typeId: 0,
-        name: '待付款',
-        url: 'bill',
-        imageurl: '../../images/waiting_pay.png',
-      },
-      {
-        typeId: 1,
-        name: '待发货',
-        url: 'bill',
-        imageurl: '../../images/waiting_fahuo.png',
-      },
-      {
-        typeId: 2,
-        name: '待收货',
-        url: 'bill',
-        imageurl: '../../images/waiting_shouhuo.png',
-      },
-      {
-        typeId: 3,
-        name: '待评价',
-        url: 'bill',
-        imageurl: '../../images/waiting_pjia.png',
-      },
-    ]
+    contentData: [],
   },
 
   /**
@@ -58,7 +55,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
   },
 
   /**
@@ -96,9 +93,12 @@ Page({
   
   },
 
-  toOrder: function() {
-    wx.navigateTo({
-      url: '../order/order',
-    })
+  navbarTap: function(e) {
+    var index = e.target.dataset.index;
+    console.log("navbarTap index: " + index);
+    this.data.navbar.selectedId = index;
+    this.setData({
+      navbar: this.data.navbar,
+    });
   },
 })

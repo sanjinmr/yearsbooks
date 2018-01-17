@@ -27,7 +27,7 @@ page {
 
 .user_info .nickname {
   font-size: 30rpx;
-  color: #666;
+  color: white;
 }
 
 .order {
@@ -81,4 +81,33 @@ page {
   width: 50rpx;
   height: 50rpx;
   margin-bottom: 4rpx;
+}
+
+.feature_list {
+  padding-left: 30rpx;
+}
+
+.feature_list .feature_lay {
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.feature_list .feature_lay image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.feature_list .feature_lay .feature_text {
+  font-size: 30rpx;
+  color: #666;
+  margin-left: 40rpx;
+}
+
+.feature_line {
+  width: 100%;
+  height: 4rpx;
+  background: #E0EEE0;
+  margin-left: 80rpx;
 }

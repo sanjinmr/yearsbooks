@@ -1,0 +1,67 @@
+/* pages/order/order.wxss */
+@import '../../templates/navbar.wxss';
+
+page {
+  background-color: #F8F9FD;
+  width: 100%;
+  height: 100%;
+}
+
+.order_container {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar {
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #f0145a;
+  font-size: 30rpx;
+  color: white;
+}
+
+.navbar .navbar_item {
+  width: 20%;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .navbar_item.active:after {
+  content: "";
+  display:block;
+  position: absolute;
+  bottom: 4rpx;
+  left: 10rpx;
+  right: 10rpx;
+  height: 6rpx;
+  background: white;
+}
+
+.tab_content {
+  width: 100%;
+  height: 100%;
+}
+
+.tab_content .empty_lay {
+  width: 100%;
+  height: 100%;
+  font-size: 30rpx;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty_lay .empty_img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 30rpx;
+}
+

@@ -1,0 +1,20 @@
+<!--pages/order/order.wxml-->
+<view class='order_container'>
+
+  <import src='../../templates/navbar.wxml'/>
+  <template is='navbar' data="{{...navbar}}"/>
+
+  <view class='tab_content'>
+
+    <view class='content_lay' wx:if="{{contentData.length > 0}}">
+      
+    </view>
+
+    <view class='empty_lay' wx:else>
+      <image class='empty_img' src='../../images/empty.png'></image>
+      <text class=''>您还没有相关订单哦~</text>
+    </view>
+    
+  </view>
+
+</view>

@@ -8,7 +8,7 @@
 
   <view class='separate'></view>
 
-  <view class='order'>
+  <view class='order' catchtap='toOrder'>
     <text class='myorder'>我的订单</text>
     <text class='allOrder'>查看全部订单</text>
     <image class='next' src='../../images/icon_next.png'></image>
@@ -21,6 +21,49 @@
       <image class='img' src='{{item.imageurl}}'></image>
       <text class='name'>{{item.name}}</text>
     </view>
+  </view>
+
+  <view class='separate'></view>
+
+  <view class='feature_list'>
+    <!-- 我的收藏 -->
+    <view class='feature_lay'>
+      <image class='feature_img' src='../../images/favorite.png'></image>
+      <text class='feature_text'>我的收藏</text>
+    </view>
+
+    <view class='feature_line'></view>
+
+    <!-- 收货地址 -->
+    <view class='feature_lay'>
+      <image class='feature_img' src='../../images/recei_addre.png'></image>
+      <text class='feature_text'>收货地址</text>
+    </view>
+
+    <view class='feature_line'></view>
+
+        <!-- 售后记录 -->
+    <view class='feature_lay'>
+      <image class='feature_img' src='../../images/sale_record.png'></image>
+      <text class='feature_text'>售后记录</text>
+    </view>
+
+    <view class='feature_line'></view>
+
+        <!-- 我的评价 -->
+    <view class='feature_lay'>
+      <image class='feature_img' src='../../images/evaluate.png'></image>
+      <text class='feature_text'>我的评价</text>
+    </view>
+
+    <view class='feature_line'></view>
+
+        <!-- 推广邀请 -->
+    <view class='feature_lay'>
+      <image class='feature_img' src='../../images/extend.png'></image>
+      <text class='feature_text'>推广邀请</text>
+    </view>
+
   </view>
 
   <view class='separate'></view>

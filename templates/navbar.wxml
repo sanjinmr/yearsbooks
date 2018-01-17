@@ -1,0 +1,8 @@
+<template name='navbar'>
+  <view class='navbar'>
+    <text class="navbar_item {{selectedId == index ? 'active' : ''}}" bindtap='navbarTap'
+    data-index='{{index}}'
+    wx:for='{{list}}' wx:key='key'>{{item.title}}
+    </text>
+  </view>
+</template>
