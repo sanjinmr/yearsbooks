@@ -1,6 +1,8 @@
 // pages/mine/mine.js
 Page({
 
+  videoContextDanmu: null,
+
   /**
    * 页面的初始数据
    */
@@ -34,7 +36,11 @@ Page({
         url: 'bill',
         imageurl: '../../images/waiting_pjia.png',
       },
-    ]
+    ],
+    chooseVideoShow: false,
+    chooseVideoUrl: '',
+    showCreateVideoContext: false,
+    inputValueDanmu: '', // 弹幕发生输入的值
   },
 
   /**
@@ -51,7 +57,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.videoContext = wx.createVideoContext('myVideo')
   },
 
   /**
@@ -101,4 +107,78 @@ Page({
       url: '../order/order',
     })
   },
+
+  /**
+   * 打开背景音乐播放器
+   */
+  backAudio: function () {
+    // 创建背景音乐播放器。当离开小程序后会在会话列表置顶显示音乐播放器
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    backgroundAudioManager.title = '此时此刻'
+    backgroundAudioManager.epname = '此时此刻'
+    backgroundAudioManager.singer = '汪峰'
+    backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+    backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46' // 设置了 src 之后会自动播放
+  },
+
+  /**
+   * 选择视频文件并播放
+   */
+  chooseVideo: function() {
+    console.log("chooseVideo: " + this.data.chooseVideoShow);
+    var that = this;
+    wx.chooseVideo({
+      sourceType: ['album', 'camera'],
+      compressed: 'false',
+      maxDuration: 60,
+      camera: 'back',
+      success: function(res) {
+        console.log("chooseVideo1: " + res.tempFilePath);
+        that.setData({
+          chooseVideoShow: !that.data.chooseVideoShow,
+          chooseVideoUrl: res.tempFilePath,
+        });
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+
+  createVideoContext: function() {
+    console.log("createVideoContext: " + this.data.showCreateVideoContext);
+    this.videoContextDanmu = wx.createVideoContext('myVideoDanmu', this)
+    this.setData({
+      showCreateVideoContext: !this.data.showCreateVideoContext,
+    });
+  },
+
+  /**
+   *  createVideoContext：获取输入的弹幕内容
+   */
+  bindInputBlur: function(e) {
+    this.data.inputValueDanmu = e.detail.value;
+  },
+
+  /**
+   * createVideoContext：发送弹幕
+   */
+  bindSendDanmu: function() {
+    this.videoContextDanmu.sendDanmu({
+      text: this.data.inputValueDanmu,
+      color: getRandomColor()
+    });
+  },
 })
+
+/**
+ * 得到随机颜色值
+ */
+function getRandomColor() {
+  let rgb = []
+  for (let i = 0; i < 3; ++i) {
+    let color = Math.floor(Math.random() * 256).toString(16)
+    color = color.length == 1 ? '0' + color : color
+    rgb.push(color)
+  }
+  return '#' + rgb.join('')
+}

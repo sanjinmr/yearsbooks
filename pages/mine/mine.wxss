@@ -111,3 +111,30 @@ page {
   background: #E0EEE0;
   margin-left: 80rpx;
 }
+
+.choose_video.show {
+  width: 100%;
+  margin-right: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose_video {
+  display: none;
+}
+
+.choose_video video {
+  width: 80%;
+  height: 300rpx;
+}
+
+.create_video_context {
+  display: none;
+}
+
+.create_video_context.show {
+  display: inline-block;
+}
+
