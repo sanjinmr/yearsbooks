@@ -138,3 +138,12 @@ page {
   display: inline-block;
 }
 
+.create_camera_context {
+  display: none;
+}
+
+.create_camera_context.show {
+  display: inline-block;
+}
+
+

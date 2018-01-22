@@ -1,4 +1,5 @@
 // pages/mine/mine.js
+var ctx;
 Page({
 
   videoContextDanmu: null,
@@ -40,7 +41,9 @@ Page({
     chooseVideoShow: false,
     chooseVideoUrl: '',
     showCreateVideoContext: false,
+    createCameraContext: false,
     inputValueDanmu: '', // 弹幕发生输入的值
+    srcTakePhoto: '', // 拍照后生成的位置
   },
 
   /**
@@ -168,6 +171,49 @@ Page({
       color: getRandomColor()
     });
   },
+
+  createCameraContext: function() {
+    this.setData({
+      createCameraContext: !this.data.createCameraContext,
+    });
+    if (!this.data.createCameraContext) {
+      console.log("createCameraContext.!false");
+      stopCameraRecord(this);
+    }
+  },
+
+  takePhoto:function() {
+    if (null == ctx) {
+      ctx = wx.createCameraContext(this);
+    }
+   
+    let that = this;
+    ctx.takePhoto({
+      quality: 'high',
+      success: function(res) {
+        that.setData({
+          srcTakePhoto: res.tempImagePath,
+        });
+      }
+    });
+  },
+
+  statechangeLivePlayer: function (e) {
+    console.log('statechangeLivePlayer code:', e.detail.code)
+  },
+
+  errorLivePlayer:function(e) {
+    console.log('errorLivePlayer code', e.detail.code)
+  },
+
+  statechangeLivePush: function(e) {
+    console.log('statechangeLivePush code', e.detail.code)
+  },
+
+  test: function() {
+    testSaveFile(this);
+    testGetSavedFileList(this);
+  },
 })
 
 /**
@@ -181,4 +227,46 @@ function getRandomColor() {
     rgb.push(color)
   }
   return '#' + rgb.join('')
+}
+
+function stopCameraRecord(that) {
+  if (null == ctx) {
+    ctx = wx.createCameraContext(that);
+  }
+  console.log("stopCameraRecord");
+  ctx.stopRecord({
+    success: function() {
+      console.log("stopCameraRecord.success");
+    },
+    fail: function () {
+      console.log("stopCameraRecord.fail");
+    },
+    complete: function () {
+      console.log("stopCameraRecord.complete");
+    },
+  });
+}
+
+function testSaveFile(that) {
+  wx.chooseImage({
+    success: function(res) {
+      var tempFilePaths = res.tempFilePaths;
+      wx.saveFile({
+        tempFilePath: tempFilePaths[0],
+        success: function(res) {
+          var saveFilePath = res.savedFilePath;
+          console.log("saveFilePath: " + saveFilePath);
+        },
+      })
+    },
+  })
+}
+
+function testGetSavedFileList(that) {
+  console.log("testGetSavedFileList");
+  wx.getSavedFileList({
+    success: function (res) {
+      console.log(res.fileList)
+    }
+  })
 }
