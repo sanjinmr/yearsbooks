@@ -211,8 +211,10 @@ Page({
   },
 
   test: function() {
-    testSaveFile(this);
-    testGetSavedFileList(this);
+    //testSaveFile(this);
+    //testGetSavedFileList(this);
+    //testDownloadFile(this);
+    testShowActionSheet(this);
   },
 })
 
@@ -267,6 +269,33 @@ function testGetSavedFileList(that) {
   wx.getSavedFileList({
     success: function (res) {
       console.log(res.fileList)
+    }
+  })
+}
+
+function testDownloadFile(that) {
+  wx.downloadFile({
+    url: 'http://qianjinxyz.oss-cn-beijing.aliyuncs.com/test.txt?Expires=1516680537&OSSAccessKeyId=TMP.AQFWr8bBv8iqAi8K49HiZjsMTYhyEjx5m06Gkl8EMYPJox2bRUHlzvelCxiDAAAwLAIUTjBk22QDg4WyzbcZXva7IUd_lXsCFHs-mqJKxEPlYTyubQ4kQQQSxSr6&Signature=VXl%2FfCKD3nGQ%2BIsc%2BiLb3xO0p2E%3D',
+    success: function (res) {
+      var filePath = res.tempFilePath
+      wx.openDocument({
+        filePath: filePath,
+        success: function (res) {
+          console.log('打开文档成功')
+        }
+      })
+    }
+  })
+}
+
+function testShowActionSheet(that) {
+  wx.showActionSheet({
+    itemList: ['A', 'B', 'C'],
+    success: function (res) {
+      console.log(res.tapIndex)
+    },
+    fail: function (res) {
+      console.log(res.errMsg)
     }
   })
 }
