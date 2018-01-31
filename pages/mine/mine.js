@@ -1,7 +1,11 @@
 // pages/mine/mine.js
 var ctx;
 Page({
-
+  onTabItemTap(item) {
+    console.log(item.index)
+    console.log(item.pagePath)
+    console.log(item.text)
+  },
   videoContextDanmu: null,
 
   /**
@@ -44,6 +48,7 @@ Page({
     createCameraContext: false,
     inputValueDanmu: '', // 弹幕发生输入的值
     srcTakePhoto: '', // 拍照后生成的位置
+    animationData: {},
   },
 
   /**
@@ -67,14 +72,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'ease'
+    });
+    this.animation = animation;
+    animation.scale(2, 2).rotate(45).step();
+    this.setData({
+      animationData: animation.export(),
+    });
+    setTimeout(function() {
+      animation.translate(30).step();
+      this.setData({
+        animationData: animation.export(),
+      });
+    }.bind(this), 1500);
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    
   },
 
   /**
@@ -210,12 +229,51 @@ Page({
     console.log('statechangeLivePush code', e.detail.code)
   },
 
+  rotateAndScale: function() {
+    // 旋转同时放大
+    this.animation.rotate(45).scale(2, 2).step();
+    this.setData({
+      animationData: this.animation.export(),
+    });
+  },
+
+  rotateThenScale: function() {
+    // 先旋转后放大
+    this.animation.rotate(45).step();
+    this.animation.scale(2, 2).step();
+    this.setData({
+      animationData: this.animation.export(),
+    });
+  },
+
+  rotateAndScaleThenTranslate: function() {
+    //先旋转同时放大，然后平移
+    this.animation.rotate(45).scale(2, 2).step();
+    this.animation.translate(100, 100).step({
+      duration: 1000,
+    });
+    this.setData({
+      animationData: this.animation.export(),
+    });
+  },
+
   test: function() {
     //testSaveFile(this);
     //testGetSavedFileList(this);
     //testDownloadFile(this);
-    testShowActionSheet(this);
+    //testShowActionSheet(this);
+    //testTopBarText(this);
+    //testNavigationBarTitle(this);
+    //testNavigationBarColor(this);
+    //testShowNavigationBarLoading(this);
+    //testTabBarBadge(this);
+    //testTabBarRedDot(this);
+    //testTabBarStyle(this);
+    //testShowTabBar(this);
+    testPageScrollTo(this);
   },
+
+  
 })
 
 /**
@@ -297,5 +355,76 @@ function testShowActionSheet(that) {
     fail: function (res) {
       console.log(res.errMsg)
     }
+  })
+}
+
+function testTopBarText(that) {
+  wx.setTopBarText({
+    text: 'hello, world!'
+  })
+}
+
+function testNavigationBarTitle(that) {
+  wx.setNavigationBarTitle({
+    title: 'testNBarTitle',
+  })
+}
+
+function testShowNavigationBarLoading(that) {
+  wx.showNavigationBarLoading();
+  setTimeout(function() {
+    wx.hideNavigationBarLoading();
+  }, 2000);
+}
+
+function testNavigationBarColor(that) {
+  wx.setNavigationBarColor({
+    frontColor: '#000000',
+    backgroundColor: '#00f',
+  })
+}
+
+function testTabBarBadge(that) {
+  wx.setTabBarBadge({
+    index: 2,
+    text: '5'
+  })
+  setTimeout(function() {
+    wx.removeTabBarBadge({
+      index: 2,
+    });
+  }, 1500);
+}
+
+function testTabBarRedDot(that) {
+  wx.showTabBarRedDot({
+    index: 2,
+  });
+  setTimeout(function() {
+    wx.hideTabBarRedDot({
+      index:2,
+    });
+  }, 1500);
+}
+
+function testTabBarStyle(that) {
+  wx.setTabBarStyle({
+    color: '#FF0000',
+    selectedColor: '#00FF00',
+    backgroundColor: '#0000FF',
+    borderStyle: 'white'
+  });
+}
+
+function testShowTabBar(that) {
+  wx.hideTabBar({
+    aniamtion: true,
+  });
+}
+
+function testPageScrollTo(that) {
+  wx.pageScrollTo({
+    scrollTop: 0,
+    duration: 300
   })
 }
