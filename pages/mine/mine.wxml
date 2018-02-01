@@ -27,7 +27,7 @@
 
   <view class='feature_list'>
     <!-- 我的收藏 -->
-    <view class='feature_lay'>
+    <view class='feature_lay' id='feature_lay'>
       <image class='feature_img' src='../../images/favorite.png'></image>
       <text class='feature_text'>我的收藏</text>
     </view>
@@ -136,6 +136,16 @@
     </view>
 
     <view animation="{{animationData}}" style="background:red;height:100rpx;width:100rpx"></view>
+
+    <canvas canvas-id='myCanvas' style='border: 1rpx solid;' />
+
+    <canvas canvas-id='myCanvas1' style='margin: 5rpx; border: 1px solid #d3d3d3;' 
+      bindtouchstart="myCanvas1Start"
+      bindtouchmove='myCanvas1Move'
+      bindtouchend='myCanvas1End'
+    />
+
+    <view hidden='{{myCanvas1Hideen}}'>Coordinates: ({{myCanvas1X}}, {{myCanvas1Y}})</view>
 
   </view>
 

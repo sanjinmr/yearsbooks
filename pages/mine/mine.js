@@ -49,6 +49,9 @@ Page({
     inputValueDanmu: '', // 弹幕发生输入的值
     srcTakePhoto: '', // 拍照后生成的位置
     animationData: {},
+    myCanvas1X: 0,
+    myCanvas1Y: 0,
+    myCanvas1Hideen:  true,
   },
 
   /**
@@ -59,6 +62,8 @@ Page({
       frontColor: '#ffffff',
       backgroundColor: '#f0145a',
     })
+
+    testFillRect(this);
   },
 
   /**
@@ -257,6 +262,97 @@ Page({
     });
   },
 
+  // 返回一个SelectorQuery对象实例。
+  // 可以在这个实例上使用select等方法选择节点，并使用boundingClientRect等方法选择需要查询的信息。
+  queryMultipleNodes: function() {
+    var query = wx.createSelectorQuery();
+    query.select('#feature_lay').bindingClientRect(); // 选择#feature_lay节点，查询边界信息
+    query.selectViewport().scrollOffset(); // 选择可视区域。查看滚动位置
+    query.exec(function(res) {
+      res(0).top; // #the-id节点的上边界坐标
+      res(1).scrollTop; // 显示区域的竖直滚动位置
+    });
+  },
+
+  getRect: function() {
+    var query = wx.createSelectorQuery();
+    query.select('#the-id').boundingClientRect(function(rect) {
+      rect.id; // 节点的id
+      rect.dataset; // 节点的dataset
+      rect.left; // 节点的左边界坐标
+      rect.right; // 节点的右边界坐标
+      rect.top; // 节点的上边界坐标
+      rect.bottom; // 节点的下边界坐标
+      rect.width; // 节点的宽度
+      rect.height; // 节点的高度
+    }).exec();
+  },
+
+  getAllRect: function() {
+    var query = wx.createSelectorQuery();
+    query.selectAll('.a-class').boundingClientRect(function(rects) {
+      rects.forEach(function(rect) {
+        rect.id;
+        rect.dataset;
+        rect.left;
+        rect.right;
+        rect.top;
+        rect.bottom;
+        rect.width;
+        rect.height;
+      });
+    }).exec();;
+  },
+
+  getScrollOffset: function() {
+    var query = wx.createSelectorQuery();
+    query.selectViewport().scrollOffset(function(res) {
+      res.id;
+      res.dataset;
+      res.scrollLeft;
+      res.scrollTop;
+    }).exec();
+  },
+
+  getFields : function() {
+    var query =  wx.createSelectorQuery();
+    query.select('the-id').fields({
+      dataset: true,
+      size: true,
+      scrollOffset: true,
+      properties: ['scrollX', 'scrollY']
+    }, function(res) {
+      res.dataset;
+      res.width;
+      res.heihgt;
+      res.scrollLeft;
+      res.scrollTop;
+      res.scrollX;
+      res.scrollY;
+    }).exec();
+  },
+
+  myCanvas1Start: function(e) {
+    this.setData({
+      myCanvas1Hideen: false,
+      myCanvas1X: e.touches[0].x,
+      myCanvas1Y: e.touches[0].y
+    });
+  },
+
+  myCanvas1Move: function(e) {
+    this.setData({
+      myCanvas1X: e.touches[0].x,
+      myCanvas1Y: e.touches[0].y
+    });
+  },
+
+  myCanvas1End: function(e) {
+    this.setData({
+      myCanvas1Hideen: true,
+    });
+  },
+
   test: function() {
     //testSaveFile(this);
     //testGetSavedFileList(this);
@@ -427,4 +523,11 @@ function testPageScrollTo(that) {
     scrollTop: 0,
     duration: 300
   })
+}
+
+function testFillRect(that) {
+  const ctx = wx.createCanvasContext('myCanvas');
+  ctx.setFillStyle('green');
+  ctx.fillRect(10, 10, 150, 75);
+  ctx.draw();
 }
