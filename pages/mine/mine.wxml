@@ -135,18 +135,51 @@
       <text class='feature_text'>test</text>
     </view>
 
+    <text style='color: #999999; font-size: 30rpx;'>test animation</text>
     <view animation="{{animationData}}" style="background:red;height:100rpx;width:100rpx"></view>
 
+    <text style='color: #999999; font-size: 30rpx;'>test fillrect</text>
     <canvas canvas-id='myCanvas' style='border: 1rpx solid;' />
 
+    <text style='color: #999999; font-size: 30rpx;'>test canvas touch</text>
     <canvas canvas-id='myCanvas1' style='margin: 5rpx; border: 1px solid #d3d3d3;' 
       bindtouchstart="myCanvas1Start"
       bindtouchmove='myCanvas1Move'
       bindtouchend='myCanvas1End'
     />
-
     <view hidden='{{myCanvas1Hideen}}'>Coordinates: ({{myCanvas1X}}, {{myCanvas1Y}})</view>
+    <text style='color: #999999; font-size: 30rpx'>Test addColorStop</text>
+    <canvas canvas-id='myCanvas2' style='margin: 5rpx; border: 1px solid #d3d3d3;'></canvas>
 
+    <text style='color: #999999; font-size: 30rpx;'>test setLineWidth</text>
+    <canvas canvas-id='myCanvas3' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test rect</text>
+    <canvas canvas-id='myCanvas4' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test fillrect</text>
+    <canvas canvas-id='myCanvas5' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test strokerect</text>
+    <canvas canvas-id='myCanvas6' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test clearrect</text>
+    <canvas canvas-id='myCanvas7' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test fill</text>
+    <canvas canvas-id='myCanvas8' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test closepath</text>
+    <canvas canvas-id='myCanvas9' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test arc</text>
+    <canvas canvas-id='myCanvas11' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test translate</text>
+    <canvas canvas-id='myCanvas12' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
+
+    <text style='color: #999999; font-size: 30rpx;'>test clip</text>
+    <canvas canvas-id='myCanvas13' style='margin: 5rpx; border: 1px solid #d3d3d3'></canvas>
   </view>
 
   <view class='separate'></view>

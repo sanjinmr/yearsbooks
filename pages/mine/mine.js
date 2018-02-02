@@ -64,6 +64,17 @@ Page({
     })
 
     testFillRect(this);
+    testAddColorStop(this);
+    testSetLineWidth(this);
+    testRect(this);
+    testFillRect1(this);
+    testStrokeRect(this);
+    testClearRect(this);
+    testFill(this);
+    testClosePath(this);
+    testArc(this);
+    testTranslate(this);
+    //testClip(this);
   },
 
   /**
@@ -366,7 +377,7 @@ Page({
     //testTabBarRedDot(this);
     //testTabBarStyle(this);
     //testShowTabBar(this);
-    testPageScrollTo(this);
+    //testPageScrollTo(this);
   },
 
   
@@ -527,7 +538,203 @@ function testPageScrollTo(that) {
 
 function testFillRect(that) {
   const ctx = wx.createCanvasContext('myCanvas');
+  // set gradient
+  const gradient = ctx.createLinearGradient(0, 0, 200, 0); // 线性渐变色
+  //const gradient = ctx.createCircularGradient(75, 50, 50) // 圆形渐变色
+  gradient.addColorStop(0, 'red');
+  gradient.addColorStop(1, 'white');
+
+  ctx.setFillStyle(gradient);
+  ctx.setShadow(5, 5, 50, 'blue');
+  ctx.fillRect(10, 10, 150, 75);
+  ctx.draw();
+}
+
+function testAddColorStop() {
+  const ctx = wx.createCanvasContext('myCanvas2');
+
+  // create circular gradient
+  const grd = ctx.createLinearGradient(30, 10, 120, 10);
+  grd.addColorStop(0, 'red');
+  grd.addColorStop(0.16, 'orange');
+  grd.addColorStop(0.33, 'yellow');
+  grd.addColorStop(0.5, 'green');
+  grd.addColorStop(0.66, 'cyan');
+  grd.addColorStop(0.83, 'blue');
+  grd.addColorStop(1, 'purple');
+
+  ctx.setFillStyle(grd);
+  ctx.fillRect(10, 10, 150, 75);
+  ctx.draw();
+}
+
+function testSetLineWidth(that) {
+  const ctx = wx.createCanvasContext('myCanvas3');
+
+  ctx.beginPath();
+  ctx.moveTo(10, 10);
+  ctx.lineTo(150, 10);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.setLineWidth(5);
+  ctx.moveTo(10, 30);
+  ctx.lineTo(150, 30);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.setLineWidth(10);
+  ctx.moveTo(10, 50);
+  ctx.lineTo(150, 50);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.setLineWidth(15);
+  ctx.moveTo(10, 70);
+  ctx.lineTo(150, 70);
+  ctx.stroke();
+
+  ctx.draw();
+}
+
+function testRect(that) {
+  const ctx = wx.createCanvasContext('myCanvas4');
+  ctx.rect(10, 10, 150, 75);
+  ctx.setFillStyle('red');
+  ctx.stroke();
+  ctx.fill();
+  ctx.draw();
+}
+
+function testFillRect1(that) {
+  const ctx = wx.createCanvasContext('myCanvas5');
   ctx.setFillStyle('green');
   ctx.fillRect(10, 10, 150, 75);
   ctx.draw();
 }
+
+function testStrokeRect(that) {
+  const ctx = wx.createCanvasContext('myCanvas6');
+  ctx.setStrokeStyle('blue');
+  ctx.strokeRect(10, 10, 150, 75);
+  ctx.draw();
+}
+
+function testClearRect(that) {
+  const ctx = wx.createCanvasContext('myCanvas7');
+  ctx.setFillStyle('red');
+  ctx.fillRect(0, 0, 150, 200);
+  ctx.setFillStyle('blue');
+  ctx.fillRect(150, 0, 150, 200);
+  ctx.clearRect(10, 10, 150, 75);
+  ctx.draw();
+}
+
+function testFill(that) {
+  const ctx = wx.createCanvasContext('myCanvas8');
+  ctx.moveTo(10, 10);
+  ctx.lineTo(100, 10);
+  ctx.lineTo(100, 100);
+  ctx.fill();
+  ctx.draw();
+}
+
+function testClosePath(that) {
+  const ctx = wx.createCanvasContext('myCanvas9');
+  ctx.moveTo(10, 10);
+  ctx.lineTo(100, 10);
+  ctx.lineTo(100, 100);
+  ctx.closePath();
+  ctx.stroke();
+  ctx.draw();
+}
+
+function testMoveTo(that) {
+  const ctx = wx.createCanvasContext('myCanvas10');
+  ctx.moveTo(10, 10);
+  ctx.lineTo(100, 10);
+  
+  ctx.moveTo(10, 50);
+  ctx.lineTo(100, 50);
+  ctx.stroke();
+  ctx.draw();
+}
+
+function testArc(that) {
+  const ctx = wx.createCanvasContext('myCanvas11');
+  // draw coordinates
+  ctx.arc(100, 75, 50, 0, 2*Math.PI);
+  ctx.setFillStyle('#eeeeee');
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(40, 75);
+  ctx.lineTo(160, 75);
+  ctx.moveTo(100, 15);
+  ctx.lineTo(100, 135);
+  ctx.setStrokeStyle('#aaaaaa');
+  ctx.stroke();
+
+  ctx.setFontSize(12);
+  ctx.setFillStyle('black');
+  ctx.fillText('0', 165, 78);
+  ctx.fillText('0.5*PI', 83, 145);
+  ctx.fillText('1*PI', 15, 78);
+  ctx.fillText('1.5*PI', 83, 10);
+  
+  // draw points
+  ctx.beginPath();
+  ctx.arc(100, 75, 2, 0, 2*Math.PI);
+  ctx.setFillStyle('lightgreen');
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(100, 25, 2, 0, 2*Math.PI);
+  ctx.setFillStyle('blue');
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(150, 75, 2, 0, 2*Math.PI);
+  ctx.setFillStyle('red');
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(100, 75, 50, 0, 1.5*Math.PI);
+  ctx.setStrokeStyle('#333333');
+  ctx.stroke();
+
+  // draw
+  ctx.draw();
+}
+
+function testTranslate(that) {
+  const ctx = wx.createCanvasContext('myCanvas12');
+  ctx.strokeRect(10, 10, 150, 100);
+  ctx.translate(20, 20);
+  ctx.strokeRect(10, 10, 150, 100);
+  ctx.translate(20, 20);
+  ctx.strokeRect(10, 10, 150, 100);
+  ctx.draw();
+}
+
+function testClip(that) {
+  const ctx = wx.createCanvasContext('myCanvas13');
+  wx.downloadFile({
+    url: 'http://is5.mzstatic.com/image/thumb/Purple128/v4/75/3b/90/753b907c-b7fb-5877-215a-759bd73691a4/source/50x50bb.jpg',
+    success: function(res) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(50, 50, 25, 0, 2*Math.PI);
+      ctx.clip();
+      ctx.drawImage(res.tempFilePath, 25, 25);
+      ctx.restore()
+      ctx.draw();
+    }
+  });
+}
+
+
+
+
+
+
