@@ -378,6 +378,7 @@ Page({
     //testTabBarStyle(this);
     //testShowTabBar(this);
     //testPageScrollTo(this);
+    testStartPullDownRefresh(this);
   },
 
   
@@ -731,6 +732,14 @@ function testClip(that) {
       ctx.draw();
     }
   });
+}
+
+function testStartPullDownRefresh(that) {
+  console.log("testStartPullDownRefresh.");
+  wx.startPullDownRefresh();
+  setTimeout(function() {
+    wx.stopPullDownRefresh();
+  }, 1500);
 }
 
 
